@@ -98,3 +98,7 @@ needle_line_quantity_effect = ((table[1]*-1) + table[2] + table[3] + (table[4]*-
 print(needle_line_quantity_effect)
 
 ```
+
+### Saida do programa
+
+![program_output](./assets/programOutput.png)
