@@ -2,6 +2,7 @@
 
 Repositório para o trabalho de planejamento fatorial da disciplina de estatística, utilizando o problema da agulha de buffon para realizar análise do impacto das variáveis de tamanho da agulha, distância entre as linhas e quantidade de agulhas lançadas para sucesso único, utilizando sistema monte carlo para realizar o calculo de probabilidade.
 
+## Script que realiza os calculos do efeito das varíaveis selecionadas
 ```r
 buffon = function(needle_size, lines_size, isTwoNeedles){
   simulations = 1000000
