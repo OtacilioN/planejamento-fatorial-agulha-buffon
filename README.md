@@ -96,9 +96,98 @@ print(line_quantity_effect)
 
 needle_line_quantity_effect = ((table[1]*-1) + table[2] + table[3] + (table[4]*-1) + table[5] + (table[6]*-1) + (table[7]*-1) + table[8])/4
 print(needle_line_quantity_effect)
-
 ```
 
 ### Saida do programa
 
 ![program_output](./assets/programOutput.png)
+
+## Código para gerar a tabela 1
+```r
+library(formattable)
+
+df <- data.frame(
+  id = 1:8, 
+  TA = c("-", "+", "-", "+", "-","+","-","+"),
+  DA = c("-", "-", "+", "+", "-","-","+","+"),
+  QA = c("-", "-", "-", "-", "+","+","+","+"),
+  Resultados = accounting(c(5.4037,26.7566,3.2092,16.0482,10.4334,46.3632,6.2859,29.6184), digits = 6,format = "f")
+  )
+
+
+formattable(df,align = c("l",rep("r", NCOL(df) - 1)),
+            list(
+  id = color_tile("white", "lightblue"),
+
+  Resultados =formatter("span",
+            style = x ~ style(color = ifelse(rank(-x) <= 3, "green", "gray")),
+            x ~ sprintf("%.2f%s (rank: %2g)", x,'%',rank(-x)))
+  
+))
+```
+
+### Saida do programa
+
+![program_output](./assets/grafico1.png)
+
+## Código para gerar a tabela 2
+
+```r
+library(formattable)
+
+df <- data.frame(
+  id = 1:8, 
+  TA = c("-", "+", "-", "+", "-","+","-","+"),
+  DA = c("-", "-", "+", "+", "-","-","+","+"),
+  QA = c("-", "-", "-", "-", "+","+","+","+"),
+  
+  TADA = c("+", "-", "-", "+", "+","-","-","+"),
+  TAQA = c("+", "-", "+", "-", "-","+","-","+"),
+  DAQA = c("+", "+", "-", "-", "-","-","+","+"),
+  TADAQA = c("-", "+", "+", "-", "+","-","-","+"),
+  Resultados = accounting(c(5.4037,26.7566,3.2092,16.0482,10.4334,46.3632,6.2859,29.6184), digits = 6,format = "f")
+)
+
+
+formattable(df,align = c("l",rep("r", NCOL(df) - 1)),
+            list(
+              id = color_tile("white", "lightblue"),
+              
+              Resultados =formatter("span",
+                                    style = x ~ style(color = ifelse(rank(-x) <= 3, "green", "gray")),
+                                    x ~ sprintf("%.2f%s (rank: %2g)", x,'%',rank(-x)))
+              
+            ))
+```
+
+### Saida do programa
+
+![program_output](./assets/grafico2.png)
+
+
+## Código para gerar a tabela 3
+
+```r
+library(formattable)
+
+df <- data.frame(
+  id = c("TA","DA","QA","TADA","TAQA","DAQA","TADAQA"), 
+
+  Resultados = accounting(c(23.3846,-8.4491, 10.2907, -5.3382,6.2021,-2.0374,-1.0286), digits = 6,format = "f")
+)
+
+
+formattable(df,align = c("l",rep("r", NCOL(df) - 1)),
+            list(
+              #id = color_tile("white", "lightblue"),
+              
+              Resultados =formatter("span",
+                                    style = x ~ style(color = ifelse(rank(-x) <= 3, "green", "gray")),
+                                    x ~ sprintf("%.2f", x )
+              
+            )))
+```
+
+### Saida do programa
+
+![program_output](./assets/grafico3.png)
