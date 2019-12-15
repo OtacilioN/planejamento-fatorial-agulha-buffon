@@ -210,3 +210,18 @@ scatterplot3d(x, y, z, highlight.3d = TRUE, angle = 750,  xlim=c(1,10) , ylim=c(
  ### Saída do programa
 
  ![](./assets/grafico4.png)
+ 
+ ## Ploter do gráfico dos efeitos da variáveis
+ 
+```r
+# Create the data for the chart
+L <- c(23, -8, 10, -5, 6, -2, -1)
+M <- c("TA","DA","QA","TADA","TAQA", "DAQA", "TADAQA")
+
+barplot(L,names.arg=M,xlab="Variáveis",ylab="Efeito",col="blue",
+        main="Efeito das variáveis",border="red")
+```
+
+ ### Saída do programa
+ 
+ ![](./assets/variaveis.png)
